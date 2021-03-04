@@ -1,0 +1,7 @@
+.comment {
+    @apply border-b-2 border-indigo-400 my-3 py-3;
+}
+
+.comment:last-child {
+    border: none;
+}

@@ -1,12 +1,19 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { shallow } from 'enzyme'
 import Button from '../button'
 
 describe('Button', () => {
-  const wrap = mount(<Button>Button</Button>)
+  test('should render the given text', () => {
+    const wrapper = shallow(<Button>Foo</Button>)
+    expect(wrapper.text()).toBe('Foo')
+  })
 
-  test('should render without throwing an error', () => {
-    expect(wrap)
-    expect(wrap.find('button').text()).toBe('Button')
+  test('should simulate clicks', () => {
+    const onClick = jest.fn()
+    const wrapper = shallow(<Button onClick={onClick}>Foo</Button>)
+
+    wrapper.simulate('click')
+
+    expect(onClick).toHaveBeenCalledTimes(1)
   })
 })

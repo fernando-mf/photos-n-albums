@@ -13,10 +13,10 @@ export default function Posts() {
   }
 
   return (
-    <div>
+    <>
       {posts.map(post => (
         <Post key={post.id} {...post} />
       ))}
-    </div>
+    </>
   )
 }

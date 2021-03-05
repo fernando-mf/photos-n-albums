@@ -20,7 +20,9 @@ export default function Post({ author, body, title, id }: PostProps) {
         <Avatar label={author.name} />
         <div className='ml-3'>
           <div>{author.name}</div>
-          <div>@{author.username}</div>
+          <div className='text-indigo-500 cursor-pointer'>
+            @{author.username.toLowerCase()}
+          </div>
         </div>
       </div>
       <h2 className='mb-5 font-bold'>{title}</h2>

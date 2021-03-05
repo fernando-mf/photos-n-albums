@@ -28,7 +28,7 @@ export const fetchUser = (userId: number) =>
 
 export const fetchAlbumPhotos = (albumId: number) =>
   fetch(`${BASE_URL}/albums/${albumId}/photos`).then(
-    res => res.json() as Promise<PhotoDTO>,
+    res => res.json() as Promise<PhotoDTO[]>,
   )
 
 export async function fetchFullPosts(): Promise<Post[]> {
@@ -36,7 +36,7 @@ export async function fetchFullPosts(): Promise<Post[]> {
   const authorIds = deduplicate(posts.map(p => p.userId))
   const authors = await Promise.all(authorIds.map(fetchUser))
 
-  return posts.map<Post>(post => ({
+  return posts.map(post => ({
     ...post,
     author: authors.find(author => author.id === post.userId)!,
   }))

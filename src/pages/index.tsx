@@ -9,8 +9,8 @@ function Home() {
   const { handleLogout } = useAuthContext()
 
   return (
-    <div>
-      <header className='flex justify-end pt-2'>
+    <div className='pb-10 pt-2'>
+      <header className='flex justify-end'>
         <Button btnStyle='link' onClick={handleLogout}>
           Log out
         </Button>

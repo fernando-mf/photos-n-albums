@@ -10,6 +10,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "static": "next build && next export",
     "format": "prettier --write 'src/'",
     "compile": "tsc --noEmit"
   },

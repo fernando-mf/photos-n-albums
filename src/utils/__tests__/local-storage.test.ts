@@ -1,3 +1,7 @@
+/**
+ * @jest-environment node
+ */
+
 describe('Local storage', () => {
   const localStorageSet = jest.fn()
   const localStorageGet = jest.fn()

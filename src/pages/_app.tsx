@@ -8,8 +8,9 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <>
       <Head>
-        <title>coas</title>
-        <link rel='icon' href='app-icon.jpg'></link>
+        <title>P.AL</title>
+        <meta name='description' content='P.AL - Photos & ALbums' />
+        <link rel='icon' href='app-icon.jpg' />
       </Head>
       <AuthProvider router={router}>
         <Component {...pageProps} />

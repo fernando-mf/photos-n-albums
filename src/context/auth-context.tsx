@@ -37,13 +37,13 @@ export function auth(router: NextRouter): IAuthContext {
     }
   }, [])
 
-  // useEffect(() => {
-  //   if (currentUser) {
-  //     router.push('/')
-  //   } else {
-  //     router.replace('/login')
-  //   }
-  // }, [currentUser])
+  useEffect(() => {
+    if (currentUser) {
+      router.push('/')
+    } else {
+      router.replace('/login')
+    }
+  }, [currentUser])
 
   const handleLogin = useCallback((username: string, password: string) => {
     if (verifyCredentials(username, password)) {

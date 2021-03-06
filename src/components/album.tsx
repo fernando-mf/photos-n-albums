@@ -15,9 +15,7 @@ export default function Album({ id, title }: AlbumProps) {
       <h2 className='text-lg mb-3 text-center font-semibold'>{title}</h2>
       <div className='grid grid-cols-4 gap-3'>
         {photos.map(({ id, title, thumbnailUrl }) => (
-          <div key={id}>
-            <img src={thumbnailUrl} alt={title} />
-          </div>
+          <img key={id} src={thumbnailUrl} alt={title} />
         ))}
       </div>
     </>

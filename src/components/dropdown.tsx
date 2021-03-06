@@ -23,7 +23,7 @@ export default function Dropdown<T extends string = any>({
       onChange={e => onChange((e.target as any).value)}
     >
       <span className='mr-4'>{label}</span>
-      <select className='px-3 py-1 border-b-2 border-indigo-400'>
+      <select className='px-3 py-1 border-b-2 border-indigo-400 appearance-none rounded-none'>
         {options.map(({ value, label }) => (
           <option key={value} value={value}>
             {label}

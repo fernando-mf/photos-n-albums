@@ -15,9 +15,9 @@ export default function Login() {
   const { register, handleSubmit } = useForm<AuthParams>()
 
   return (
-    <main className='h-screen flex justify-center items-center'>
+    <main className='h-screen flex justify-center items-center mx-3'>
       <form
-        className='space-y-6 flex flex-col w-full max-w-md'
+        className='space-y-6 flex flex-col w-full sm:max-w-md'
         onSubmit={handleSubmit(({ username, password }) =>
           handleLogin(username, password),
         )}

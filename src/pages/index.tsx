@@ -10,7 +10,7 @@ function Home() {
 
   return (
     <div className='pb-10 pt-2'>
-      <header className='flex justify-end'>
+      <header className='flex justify-end mb-2'>
         <Button btnStyle='link' onClick={handleLogout}>
           Log out
         </Button>

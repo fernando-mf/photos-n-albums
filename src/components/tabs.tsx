@@ -18,11 +18,11 @@ export default function Tabs({ tabs = [] }: TabsProps) {
 
   return (
     <div className='flex flex-col justify-center items-center'>
-      <div className='border border-indigo-200 rounded mb-5'>
+      <div className='border border-indigo-200 rounded mb-5 sticky top-2'>
         {tabs.map(({ label }) => (
           <Button
             btnStyle='base'
-            className='hover:bg-indigo-200'
+            className='bg-white hover:bg-indigo-200'
             onClick={() => setActiveTab(label)}
             key={label}
           >

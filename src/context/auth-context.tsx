@@ -1,12 +1,13 @@
 import React, { ReactNode, useCallback, useEffect, useState } from 'react'
+import { NextRouter } from 'next/router'
 
 import {
+  AuthError,
   AUTH_STORAGE_KEY,
   DEMO_PASSWORD,
   DEMO_USERNAME,
 } from '@/constants/auth'
 import storage from '@/utils/local-storage'
-import { NextRouter } from 'next/router'
 
 const noop = () => {}
 
@@ -18,6 +19,7 @@ export interface IAuthContext {
   handleLogin: (username: string, password: string) => void
   handleLogout: () => void
   isLoggedIn: boolean
+  authError: AuthError | null
 }
 
 export const AuthContext = React.createContext<IAuthContext>({
@@ -25,10 +27,12 @@ export const AuthContext = React.createContext<IAuthContext>({
   handleLogin: noop,
   handleLogout: noop,
   isLoggedIn: false,
+  authError: null,
 })
 
 export function auth(router: NextRouter): IAuthContext {
   const [currentUser, setCurrentUser] = useState<string | null>(null)
+  const [authError, setAuthError] = useState<AuthError | null>(null)
 
   useEffect(() => {
     const storedUser = storage.get(AUTH_STORAGE_KEY)
@@ -49,7 +53,10 @@ export function auth(router: NextRouter): IAuthContext {
     if (verifyCredentials(username, password)) {
       storage.set(AUTH_STORAGE_KEY, username)
       setCurrentUser(username)
+      setAuthError(null)
       router.push('/')
+    } else {
+      setAuthError(AuthError.INCORRECT_CREDENTIALS)
     }
   }, [])
 
@@ -63,6 +70,7 @@ export function auth(router: NextRouter): IAuthContext {
     isLoggedIn: !!currentUser,
     handleLogout,
     handleLogin,
+    authError,
   }
 }
 

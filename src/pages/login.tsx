@@ -11,7 +11,7 @@ type AuthParams = {
 }
 
 export default function Login() {
-  const { handleLogin } = useAuthContext()
+  const { handleLogin, authError } = useAuthContext()
   const { register, handleSubmit } = useForm<AuthParams>()
 
   return (
@@ -23,13 +23,23 @@ export default function Login() {
         )}
       >
         <h1 className='text-center font-bold text-2xl'>Sign In</h1>
-        <Input register={register} name='username' placeholder='Username' />
+        <Input
+          register={register}
+          name='username'
+          placeholder='Username'
+          hasError={!!authError}
+        />
         <Input
           register={register}
           name='password'
           placeholder='Password'
+          hasError={!!authError}
           type='password'
         />
+
+        {authError && (
+          <span className='text-red-500'>Incorrect username or password</span>
+        )}
 
         <span className='italic'>
           Try <span className='font-bold'>demo</span> as username and password
